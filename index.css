@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding:0;
+}
+
+#body{
+	position: fixed;
+	left: 12px;
+	top: 0;
+	width: 1831px;
+	height: 990px;
+}
+
+#bar1{
+	position: fixed;
+	background-color: grey;
+	height:200px;
+	width: 12px;
+	left: 0;
+	top: 40vh;
+}
+
+#bar2{
+	position: fixed;
+	background-color: grey;
+	height:200px;
+	width: 12px;
+	right: 0;
+	top: 40vh;
+
+}
+
+#ball{
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	background-color: red;
+	border: 1px solid red;
+	border-radius:20px;
+	left:600px;
+	top: 450px;
+}
