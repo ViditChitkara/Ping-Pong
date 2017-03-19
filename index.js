@@ -1,5 +1,4 @@
 var bar1=document.getElementById('bar1');
-console.log(bar1.getBoundingClientRect());
 var bar2=document.getElementById('bar2');
 var ball=document.getElementById('ball');
 var body=document.getElementById('body');
@@ -37,6 +36,8 @@ window.addEventListener('keydown',function (event) {
 	var bar1Y=bar1.getBoundingClientRect();
 	var bar2Y=bar2.getBoundingClientRect();
 
+     bar1Height=bar1.getBoundingClientRect().height;
+     bar2Height=bar2.getBoundingClientRect().height;
 
     if(event.which==87){
 	    //w
@@ -46,7 +47,7 @@ window.addEventListener('keydown',function (event) {
 
     if(event.which==83){
         //s
-        delta=((bodyDim.bottom-bodyDim.top-200)-(bar1Y.top-bodyDim.top))>20 ? 20 : (bodyDim.bottom-bodyDim.top-200)-(bar1Y.top-bodyDim.top);
+        delta=((bodyDim.bottom-bodyDim.top-bar1Height)-(bar1Y.top-bodyDim.top))>20 ? 20 : (bodyDim.bottom-bodyDim.top-bar1Height)-(bar1Y.top-bodyDim.top);
         bar1.style.top=bar1Y.top+delta+"px";
     }
 
@@ -57,7 +58,7 @@ window.addEventListener('keydown',function (event) {
     }
     if(event.which==40){
         //down
-        delta=((bodyDim.bottom-bodyDim.top-200)-(bar2Y.top-bodyDim.top))>20 ? 20 : (bodyDim.bottom-bodyDim.top-200)-(bar2Y.top-bodyDim.top);
+        delta=((bodyDim.bottom-bodyDim.top-bar2Height)-(bar2Y.top-bodyDim.top))>20 ? 20 : (bodyDim.bottom-bodyDim.top-bar2Height)-(bar2Y.top-bodyDim.top);
         bar2.style.top=bar2Y.top+delta+"px";
 
     }
@@ -80,8 +81,10 @@ function moveball(event){
 
     else if(ballDim.left==bodyDim.left && (mid>bar1Y.top && mid<bar1Y.top+bar1Height)){
         x=x*-1;
-
-       
+        if(bar1.getBoundingClientRect().height!=60){
+        bar1.style.top=bar1.getBoundingClientRect().top+10;
+        bar1.style.height=bar1.getBoundingClientRect().height-20;
+        }
 
         timeInterval*=factor;
         clearInterval(interval);
@@ -91,6 +94,11 @@ function moveball(event){
 
     else if(ballDim.left==bodyDim.width-40 && (mid>bar2Y.top && mid<bar2Y.top+bar2Height)){
         x=x*-1;
+        if(bar2.getBoundingClientRect().height!=60){
+        bar2.style.top=bar2.getBoundingClientRect().top+10;
+        bar2.style.height=bar2.getBoundingClientRect().height-20;
+        }
+
         timeInterval*=factor;
         clearInterval(interval);
         interval=setInterval(moveball,timeInterval);
