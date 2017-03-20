@@ -3,6 +3,7 @@ var bar2=document.getElementById('bar2');
 var ball=document.getElementById('ball');
 var body=document.getElementById('body');
 var bodyDim=body.getBoundingClientRect();
+console.log(bodyDim);
 var interval;
 var delta=0;
 var random,startingDir;
@@ -110,12 +111,12 @@ function moveball(event){
         clearInterval(interval);
     }
 
-    else if((1831-ballDim.left)==40){
+    else if((bodyDim.width-ballDim.left)==40){
         alert("gameover");
         clearInterval(interval);
     }
 
-    else if((990-ballDim.top)==40){
+    else if((bodyDim.height-ballDim.top)==40){
         y=y*-1;
         timeInterval *=factor;
         clearInterval(interval);
